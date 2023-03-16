@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
-import { withErrorBoundary } from 'react-error-boundary';
+import { ErrorBoundary} from 'react-error-boundary';
+import { ErrorFallback } from './components/ErrorFallback';
 
 
 function Bomb({username}) {
   if (username === 'bomb'){
     throw new Error(" CABOOM !!!");
   }
-  return `Hello ${username}`;
+  return `Hello! ${username}`;
 }
 
 function App(){
@@ -24,11 +25,12 @@ function App(){
             onChange={(e) => setUsername(e.target.value)}
             />
         </label>
-        <Bomb username={username} />
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+         <Bomb username={username} />
+        </ErrorBoundary>
       </header>
     </div>
   )
-}
-export default withErrorBoundary (App, {
-  fallback: <div>OppS! Something went wrong. </div>
-});
+};
+
+export default App;
