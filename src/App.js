@@ -25,7 +25,8 @@ function App(){
             onChange={(e) => setUsername(e.target.value)}
             />
         </label>
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <ErrorBoundary FallbackComponent={ErrorFallback}
+          onReset={() => setUsername('')}>
          <Bomb username={username} />
         </ErrorBoundary>
       </header>
