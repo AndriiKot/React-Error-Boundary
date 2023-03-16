@@ -1,6 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 
+function Bomb({username}) {
+  if (username === 'bomb'){
+    throw new Error " CABOOM !!!";
+  }
+  return `Hello ${username}`;
+}
+
 function App() {
   return (
     <div className="App">
