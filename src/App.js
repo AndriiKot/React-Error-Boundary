@@ -26,8 +26,9 @@ function App(){
             />
         </label>
         <ErrorBoundary FallbackComponent={ErrorFallback}
-          onReset={() => setUsername('')}>
+          resetKeys={[username]}>
          <Bomb username={username} />
+         
         </ErrorBoundary>
       </header>
     </div>
