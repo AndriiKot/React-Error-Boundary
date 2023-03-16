@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 function Bomb({username}) {
@@ -8,25 +7,23 @@ function Bomb({username}) {
   return `Hello ${username}`;
 }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+function App(){
+  const [username,setUsername] = React.useState('');
+
+  return(
+    <div className='App'>
+      <header className='App-header'>
+        <label>
+          {`Username: `}
+          <input
+            placeholder={`type "bomb"`}
+            value={username}
+            onChange=(e) => setUsername(e.target.value)
+            />
+        </label>
+        <Bomb username= username />
       </header>
     </div>
-  );
+  )
 }
-
 export default App;
